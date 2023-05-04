@@ -1,5 +1,5 @@
 import React from "react";
-// import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 // import { useUserAuth } from "../routes/login/UserAuthContext";
 // import { useNavigate } from "react-router-dom";
 
@@ -32,7 +32,6 @@ const Navlinks = () => {
   //   }
   // };
 
-  return <h1> make nav bar</h1>;
+  return;
 };
-
 export default Navlinks;
