@@ -4,6 +4,35 @@ import { NavLink } from "react-router-dom";
 // import { useNavigate } from "react-router-dom";
 
 const Navlinks = () => {
+  // const navigate = useNavigate();
+  // const { googleSignIn } = useUserAuth();
+
+  // const { user, logOut } = useUserAuth();
+
+  // const data = useUserAuth();
+
+  // console.log(data);
+  // //logout
+  // const handleSignOut = async () => {
+  //   try {
+  //     await logOut();
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  // //signin
+  // const handleGoogleSignIn = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     await googleSignIn();
+  //     navigate("/Shopee");
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // };
+
+  return;
   <nav className="bg-gray-100 shadow-md">
     <div className="w-full mx-auto px-16">
       <div className="flex justify-between">
@@ -44,6 +73,5 @@ const Navlinks = () => {
       </NavLink>
     </div>
   </nav>;
-  return;
 };
 export default Navlinks;
