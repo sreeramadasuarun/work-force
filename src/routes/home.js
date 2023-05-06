@@ -5,10 +5,6 @@ const Home = () => {
     <>
       <div className="py-10 text-left">Home</div>
       <div>Home</div>
-      <div>Home</div>
-      <div>Home</div>
-      <div>Home</div>
-      <div>Home</div>
     </>
   );
 };
