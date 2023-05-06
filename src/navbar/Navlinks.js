@@ -33,7 +33,7 @@ const Navlinks = () => {
   // };
 
   return (
-    <nav className="bg-gray-100 shadow-md">
+    <nav className="bg-gray-100 shadow-md z-20 fixed w-screen">
       <div className="w-full mx-auto px-16">
         <div className="flex justify-between">
           <div className="flex space-x-4">
