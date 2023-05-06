@@ -1,36 +1,24 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-// import { useUserAuth } from "../routes/login/UserAuthContext";
-// import { useNavigate } from "react-router-dom";
+import { useUserAuth } from "../routes/login/UserAuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Navlinks = () => {
-  // const navigate = useNavigate();
-  // const { googleSignIn } = useUserAuth();
+  const navigate = useNavigate();
 
-  // const { user, logOut } = useUserAuth();
+  const { user, logOut } = useUserAuth();
 
-  // const data = useUserAuth();
+  const data = useUserAuth();
 
-  // console.log(data);
-  // //logout
-  // const handleSignOut = async () => {
-  //   try {
-  //     await logOut();
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // //signin
-  // const handleGoogleSignIn = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     await googleSignIn();
-  //     navigate("/Shopee");
-  //   } catch (error) {
-  //     console.log(error.message);
-  //   }
-  // };
+  console.log(data);
+  //logout
+  const handleSignOut = async () => {
+    try {
+      await logOut();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <nav className="bg-gray-100 shadow-md z-20 fixed top-0 w-screen ">
@@ -54,15 +42,26 @@ const Navlinks = () => {
             <NavLink to="/profile" className="py-5 px-3">
               Profile
             </NavLink>
-            <NavLink to="/Login" className="py-5 px-3">
-              Login
-            </NavLink>
-            <NavLink
-              to="/signup"
-              className="py-2 px-3 bg-yellow-400 hover:bg-yellow-300 text-yellow-900 hover:text-yellow-800 rounded transition duration-300"
-            >
-              Signup
-            </NavLink>
+
+            {user ? (
+              <NavLink onClick={handleSignOut} to="/Logout">
+                Logout
+              </NavLink>
+            ) : (
+              <NavLink to="/Login" className="py-5 px-3">
+                Login
+              </NavLink>
+            )}
+            {user ? (
+              ""
+            ) : (
+              <NavLink
+                to="/signup"
+                className="py-2 px-3 bg-yellow-400 hover:bg-yellow-300 text-yellow-900 hover:text-yellow-800 rounded transition duration-300"
+              >
+                Signup
+              </NavLink>
+            )}
           </div>
         </div>
       </div>

@@ -1,7 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useUserAuth } from "../routes/login/UserAuthContext";
 import { NavLink } from "react-router-dom";
 
 const Signup = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const { signUp } = useUserAuth();
+  const navigate = useNavigate();
+
+  const handleSignupSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    try {
+      await signUp(email, password);
+      navigate("/");
+    } catch (err) {
+      setError(err.message);
+    }
+  };
   return (
     <div className="h-screen md:flex">
       <div className="relative overflow-hidden md:flex w-1/2 bg-gradient-to-r from-purple-500 to-purple-900 i justify-around items-center hidden">
@@ -23,23 +41,27 @@ const Signup = () => {
           <h3 className="mb-6 text-2xl font-medium text-center">
             create a account
           </h3>
-          <input
-            type="text"
-            name="email"
-            className="block w-full px-4 py-3 mb-4  border-2 border-transparent border-gray-200 focus:ring focus:ring-blue-500 focus:outline-none rounded-none"
-            placeholder="Email address"
-          />
-          <input
-            type="password"
-            name="password"
-            className="block w-full px-4 py-3 mb-4  border-2 border-transparent border-gray-200 focus:ring focus:ring-blue-500 focus:outline-none rounded-none"
-            placeholder="Password"
-          />
-          <div className="block">
-            <button className="w-full px-3 py-4 font-medium text-white bg-blue-600 rounded-none">
-              Register
-            </button>
-          </div>
+          <form onSubmit={handleSignupSubmit}>
+            <input
+              type="text"
+              name="email"
+              onChange={(e) => setEmail(e.target.value)}
+              className="block w-full px-4 py-3 mb-4  border-2 border-transparent border-gray-200 focus:ring focus:ring-blue-500 focus:outline-none rounded-none"
+              placeholder="Email address"
+            />
+            <input
+              type="password"
+              name="password"
+              onChange={(e) => setPassword(e.target.value)}
+              className="block w-full px-4 py-3 mb-4  border-2 border-transparent border-gray-200 focus:ring focus:ring-blue-500 focus:outline-none rounded-none"
+              placeholder="Password"
+            />
+            <input
+              value="Register"
+              type="submit"
+              className="cursor-pointer	block w-full px-3 py-4 font-medium text-white bg-blue-600 rounded-none"
+            />
+          </form>
           <p className="w-full mt-4 text-sm text-center text-gray-500">
             Already have an account?{" "}
             <NavLink to="/Login" className="text-blue-500 underline">

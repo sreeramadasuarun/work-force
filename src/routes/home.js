@@ -68,7 +68,7 @@ const Home = () => {
                 work, eliminate toil, and deploy changes with ease.
               </p>
 
-              <ul role="list" class="pt-8 space-y-5 border-t border-gray-200  ">
+              <ul class="pt-8 space-y-5 border-t border-gray-200  ">
                 <li class="flex space-x-3">
                   <svg
                     class="flex-shrink-0 w-5 h-5 text-purple-500 "
