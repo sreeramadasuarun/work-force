@@ -11,19 +11,17 @@ import Forms from "./routes/formsdetails";
 
 function App() {
   return (
-    <div className="flex flex-col 	">
-      <UserAuthContextProvider>
-        <NavLink />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/Logout" element={<Logout />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/formsdetails" element={<Forms />} />
-        </Routes>
-      </UserAuthContextProvider>
-    </div>
+    <UserAuthContextProvider>
+      <NavLink />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/Logout" element={<Logout />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/formsdetails" element={<Forms />} />
+      </Routes>
+    </UserAuthContextProvider>
   );
 }
 

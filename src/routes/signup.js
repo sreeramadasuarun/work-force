@@ -6,20 +6,15 @@ import { NavLink } from "react-router-dom";
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const { signUp } = useUserAuth();
   const navigate = useNavigate();
 
   const handleSignupSubmit = async (e) => {
     e.preventDefault();
-    setError("");
-    try {
-      await signUp(email, password);
-      navigate("/");
-    } catch (err) {
-      setError(err.message);
-    }
+    await signUp(email, password);
+    navigate("/");
   };
+
   return (
     <div className="h-screen md:flex">
       <div className="relative overflow-hidden md:flex w-1/2 bg-gradient-to-r from-purple-500 to-purple-900 i justify-around items-center hidden">
