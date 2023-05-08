@@ -28,23 +28,22 @@ export function UserAuthContextProvider({ children }) {
     }
   };
 
-  const [show, setshow] = useState("");
+  // const [show, setShow] = useState("");
 
-  const getData = () => {
-    getDocs(collectRef).then((response) => {
-      const getnow = response.docs.map((item) => {
-        return { ...item.data(), id: item.id };
-      });
-      console.log(getnow);
-      console.log(getnow[0]);
-      console.log(getnow[0].city);
-
-      setshow(getnow);
-    });
-  };
-  useEffect(() => {
-    getData();
-  }, []);
+  // const getData = () => {
+  //   getDocs(collectRef).then((response) => {
+  //     const getnow = response.docs.map((item) => {
+  //       return { ...item.data(), id: item.id };
+  //     });
+  //     setShow(getnow);
+  //     console.log(getnow);
+  //     console.log(getnow[0]);
+  //     console.log(getnow[0].city);
+  //   });
+  // };
+  // useEffect(() => {
+  //   getData();
+  // }, []);
 
   // .................................
 
@@ -84,9 +83,9 @@ export function UserAuthContextProvider({ children }) {
   return (
     <userAuthContext.Provider
       value={{
-        show,
-        // getdatanow,
-        getData,
+        // show,
+        // // getdatanow,
+        // getData,
         handleSubmit,
         user,
         logIn,

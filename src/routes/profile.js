@@ -1,19 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useUserAuth } from "../routes/login/UserAuthContext";
 import { useNavigate } from "react-router-dom";
 import userpic from "../assets/images/userpic.avif";
+import { database } from "../utils/firebase";
+import { collection, getDocs } from "firebase/firestore";
 
 const Profile = () => {
-  const { user, show } = useUserAuth();
-  // const { user, getData, getdatanow } = useUserAuth();
+  const { user } = useUserAuth();
+
   const navigate = useNavigate();
+
+  const collectRef = collection(database, "users");
+  const [show, setShow] = useState([{}]);
+
+  const getData = () => {
+    getDocs(collectRef).then((response) => {
+      const getnow = response.docs.map((item) => {
+        return { ...item.data(), id: item.id };
+      });
+      setShow(getnow);
+
+      // console.log(getnow);
+      // console.log(getnow[0]);
+      // console.log(getnow[0].city);
+    });
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   console.log(show);
   console.log(show[0].city);
-  // getData();
-  // console.log(getData);
-  // console.log(getData.city);
-  // console.log(getdatanow);
+  console.log(show[0].town);
+
   return (
     <main className=" mt-[3.5rem]  w-screen">
       <div className="  top-0 w-screen h-[21rem] bg-center bg-hero-image"></div>
@@ -29,10 +49,13 @@ const Profile = () => {
               />
               <div className="text-left ">
                 <h3 className="text-4xl font-semibold leading-normal text-blueGray-700 ">
-                  {/* {user ? show[0].town : "login for details"} */}
+                  {user ? show[0].town : "login for details"}
                 </h3>
                 <div className="text-sm leading-normal text-blueGray-400 font-bold uppercase">
                   {user ? user.email : "login for details"}
+                </div>
+                <div className="text-2xl leading-normal text-blueGray-400 font-bold uppercase">
+                  {user ? show[0].city : "login for details"}
                 </div>
                 <br />
                 <div className="text-sm leading-normal text-blueGray-400 font-bold uppercase">
