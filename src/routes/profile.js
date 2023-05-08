@@ -1,6 +1,14 @@
 import React from "react";
+import { useUserAuth } from "../routes/login/UserAuthContext";
+import { useNavigate } from "react-router-dom";
+import userpic from "../assets/images/userpic.avif";
 
 const Profile = () => {
+  const { user } = useUserAuth();
+  const navigate = useNavigate();
+
+  console.log(user);
+
   return (
     <main className=" mt-[3.5rem]  w-screen">
       <div className="  top-0 w-screen h-[21rem] bg-center bg-hero-image"></div>
@@ -10,19 +18,33 @@ const Profile = () => {
           <div className=" flex flex-col min-w-0 break-words bg-white mb-6 shadow-xl rounded-lg -mt-64">
             <div className="flex justify-center items-center gap-[5rem] mt-10">
               <img
-                className="w-[20rem] rounded-2xl	 "
-                src="https://i.ibb.co/F7Py9ch/1a590398584985-60899fdd5580d.jpg"
+                className="w-[12rem] rounded-2xl	 "
+                src={userpic}
                 alt="noimagefound"
               />
               <div className="text-left ">
                 <h3 className="text-4xl font-semibold leading-normal text-blueGray-700 ">
-                  Hello Arun
+                  {user ? user.displayName : "login for details"}
                 </h3>
                 <div className="text-sm leading-normal text-blueGray-400 font-bold uppercase">
-                  Andhra Pradesh, India
+                  {user ? user.email : "login for details"}
                 </div>
-                <div className="mb-2 text-blueGray-600 mt-1">
-                  UI/UX Designer And Developer
+                <br />
+                <div className="text-sm leading-normal text-blueGray-400 font-bold uppercase">
+                  {user ? (
+                    <div
+                      onClick={() => navigate("/formsdetails")}
+                      className="text-blue-500 cursor-pointer 	"
+                    >
+                      fill details
+                    </div>
+                  ) : (
+                    "login for details"
+                  )}
+                </div>
+
+                <div className="text-sm leading-normal text-blueGray-400 font-bold uppercase">
+                  {user ? user.photoURL : "login for details"}
                 </div>
               </div>
             </div>
