@@ -8,11 +8,46 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
-import { auth } from "../../utils/firebase";
+import { auth, database } from "../../utils/firebase";
+import { collection, addDoc, getDocs } from "firebase/firestore";
 
 const userAuthContext = createContext();
 
 export function UserAuthContextProvider({ children }) {
+  const collectRef = collection(database, "users");
+
+  const handleSubmit = (town, city) => {
+    try {
+      const docRef = addDoc(collectRef, {
+        town: town,
+        city: city,
+      });
+      console.log("Document written with ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+  };
+
+  const [show, setshow] = useState("");
+
+  const getData = () => {
+    getDocs(collectRef).then((response) => {
+      const getnow = response.docs.map((item) => {
+        return { ...item.data(), id: item.id };
+      });
+      console.log(getnow);
+      console.log(getnow[0]);
+      console.log(getnow[0].city);
+
+      setshow(getnow);
+    });
+  };
+  useEffect(() => {
+    getData();
+  }, []);
+
+  // .................................
+
   const [user, setUser] = useState({});
 
   function logIn(email, password) {
@@ -48,7 +83,17 @@ export function UserAuthContextProvider({ children }) {
 
   return (
     <userAuthContext.Provider
-      value={{ user, logIn, signUp, logOut, googleSignIn }}
+      value={{
+        show,
+        // getdatanow,
+        getData,
+        handleSubmit,
+        user,
+        logIn,
+        signUp,
+        logOut,
+        googleSignIn,
+      }}
     >
       {children}
     </userAuthContext.Provider>

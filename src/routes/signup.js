@@ -12,6 +12,7 @@ const Signup = () => {
   const handleSignupSubmit = async (e) => {
     e.preventDefault();
     await signUp(email, password);
+
     navigate("/");
   };
 
