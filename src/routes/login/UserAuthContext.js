@@ -59,7 +59,7 @@ export function UserAuthContextProvider({ children }) {
   //   getData();
   // }, []);
 
-  const [show, setShow] = useState([{}]);
+  const [show, setShow] = useState("");
 
   async function getData() {
     const docRef = doc(database, "users", user.uid);
@@ -72,9 +72,9 @@ export function UserAuthContextProvider({ children }) {
     }
   }
 
-  useEffect(() => {
-    getData();
-  }, []);
+  getData();
+  // useEffect(() => {
+  // }, []);
 
   // console.log(show);
 
