@@ -10,7 +10,7 @@ const Navlinks = () => {
 
   const data = useUserAuth();
 
-  console.log(data);
+  // console.log(data);
   //logout
   const handleSignOut = async () => {
     try {

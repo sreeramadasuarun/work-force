@@ -9,25 +9,29 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { auth, database } from "../../utils/firebase";
-import { collection, addDoc, setDoc, getDocs } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  setDoc,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
 import { doc, getDoc } from "firebase/firestore";
-import { Await } from "react-router-dom";
-import { getDatabase, ref, set } from "firebase/database";
 
 const userAuthContext = createContext();
 
 export function UserAuthContextProvider({ children }) {
-  const collectRef = collection(database, "users");
+  const [user, setUser] = useState({});
 
-  const handleSubmit = () => {
+  const collectRef = collection(database, "users");
+  // const q = query(collectRef, where(id, "==", user.uid));
+  // console.log(user.uid);
+  const handleSubmit = (town, city) => {
     try {
-      const docRef = setDoc(doc(collectRef, "SF"), {
-        name: "San Francisco",
-        state: "CA",
-        country: "USA",
-        capital: false,
-        population: 860000,
-        regions: ["west_coast", "norcal"],
+      const docRef = setDoc(doc(collectRef, user.uid), {
+        town: town,
+        city: city,
       });
 
       console.log("Document written with ID: ", docRef.id);
@@ -36,25 +40,45 @@ export function UserAuthContextProvider({ children }) {
     }
   };
 
-  const [show, setShow] = useState("");
+  // const [show, setShow] = useState("");
 
-  const getData = () => {
-    getDocs(collectRef).then((response) => {
-      const getnow = response.docs.map((item) => {
-        return { ...item.data(), id: item.id };
-      });
-      setShow({ ...getnow });
-      console.log(getnow);
-    });
-  };
+  // const getData = () => {
+  //   const docRef = doc(database, "users", user.uid);
+
+  //   getDocs(docRef).then((response) => {
+  //     console.log(
+  //       response.docs.map((item) => {
+  //         return { ...item.data(), id: item.id };
+  //       })
+  //     );
+  //   });
+  // };
+
+  // // console.log(user.uid);
+  // useEffect(() => {
+  //   getData();
+  // }, []);
+
+  const [show, setShow] = useState([{}]);
+
+  async function getData() {
+    const docRef = doc(database, "users", user.uid);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      console.log("Document data:", docSnap.data());
+      setShow(docSnap.data());
+    } else {
+      console.log("No such document!");
+    }
+  }
+
   useEffect(() => {
     getData();
   }, []);
 
+  // console.log(show);
+
   // .................................
-
-  const [user, setUser] = useState({});
-
   function logIn(email, password) {
     return signInWithEmailAndPassword(auth, email, password);
   }
@@ -77,7 +101,8 @@ export function UserAuthContextProvider({ children }) {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentuser) => {
-      console.log("Auth", currentuser);
+      // console.log("Auth", currentuser);
+
       setUser(currentuser);
     });
 

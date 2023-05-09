@@ -1,23 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useUserAuth } from "../routes/login/UserAuthContext";
 import { useNavigate } from "react-router-dom";
 import userpic from "../assets/images/userpic.avif";
-// import { database } from "../utils/firebase";
-// import { collection, getDocs } from "firebase/firestore";
 
 const Profile = () => {
   const { user, show } = useUserAuth();
 
   const navigate = useNavigate();
 
-  // const collectRef = collection(database, "users");
-  const data = useUserAuth();
-
-  console.log(data.show);
-  // console.log(data.show[3].city);
   console.log(show);
-  // console.log(show[0].country);
-  // // console.log(show[1].town);
+  console.log(show.town);
 
   return (
     <main className=" mt-[3.5rem]  w-screen">
@@ -34,13 +26,13 @@ const Profile = () => {
               />
               <div className="text-left ">
                 <h3 className="text-4xl font-semibold leading-normal text-blueGray-700 ">
-                  {/* {user ? showdata[1].town : "login for details"} */}
+                  {user ? show.town : "login for details"}
                 </h3>
                 <div className="text-sm leading-normal text-blueGray-400 font-bold uppercase">
                   {user ? user.email : "login for details"}
                 </div>
                 <div className="text-2xl leading-normal text-blueGray-400 font-bold uppercase">
-                  {/* {user ? show[1].city : "login for details"} */}
+                  {user ? show.city : "login for details"}
                 </div>
                 <br />
                 <div className="text-sm leading-normal text-blueGray-400 font-bold uppercase">
