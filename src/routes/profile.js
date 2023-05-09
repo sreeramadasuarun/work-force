@@ -8,7 +8,7 @@ const Profile = () => {
 
   const navigate = useNavigate();
 
-  console.log(show);
+  // console.log(show);
   // console.log(show.town);
 
   return (
@@ -26,16 +26,16 @@ const Profile = () => {
               />
               <div className="text-left ">
                 <h3 className="text-4xl font-semibold leading-normal text-blueGray-700 ">
-                  {user ? show.town : "login for details"}
+                  {user ? show.fullname : "login for details"}
                 </h3>
                 <div className="text-sm leading-normal text-blueGray-400 font-bold uppercase">
                   {user ? user.email : "login for details"}
                 </div>
                 <div className="text-2xl leading-normal text-blueGray-400 font-bold uppercase">
-                  {user ? show.city : "login for details"}
+                  {user ? show.permanentAddress : "login for details"}
                 </div>
                 <br />
-                <div className="text-sm leading-normal text-blueGray-400 font-bold uppercase">
+                {/* <div className="text-sm leading-normal text-blueGray-400 font-bold uppercase">
                   {user ? (
                     <div
                       onClick={() => navigate("/formsdetails")}
@@ -46,11 +46,7 @@ const Profile = () => {
                   ) : (
                     "login for details"
                   )}
-                </div>
-
-                <div className="text-sm leading-normal text-blueGray-400 font-bold uppercase">
-                  {user ? user.photoURL : "login for details"}
-                </div>
+                </div> */}
               </div>
             </div>
             <div className="mt-10 py-10 border-t border-blueGray-200 text-center">
@@ -60,9 +56,7 @@ const Profile = () => {
                     About
                   </h3>
                   <p className="mb-10 text-lg leading-relaxed text-blueGray-700 ">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Culpa natus asperiores eum magnam molestias ab
-                    necessitatibus, laboriosam velit ipsum nisi?
+                    {user ? show.about : "login for details"}
                   </p>
                 </div>
               </div>
@@ -80,7 +74,7 @@ const Profile = () => {
                           Company
                         </dt>
                         <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                          Streams
+                          {user ? show.companyName : "login for details"}
                         </dd>
                       </div>
                       <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -88,7 +82,7 @@ const Profile = () => {
                           Skill in
                         </dt>
                         <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                          React JS
+                          {user ? show.skill : "login for details"}
                         </dd>
                       </div>
                       <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -96,7 +90,7 @@ const Profile = () => {
                           Email address
                         </dt>
                         <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                          sreeramadasuarun@gmail.com
+                          {user ? user.email : "login for details"}
                         </dd>
                       </div>
                       <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -104,7 +98,7 @@ const Profile = () => {
                           company address
                         </dt>
                         <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                          Coimbatore, India
+                          {user ? show.companyAddress : "login for details"}
                         </dd>
                       </div>
                     </dl>

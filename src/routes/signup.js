@@ -13,7 +13,7 @@ const Signup = () => {
     e.preventDefault();
     await signUp(email, password);
 
-    navigate("/");
+    navigate("/formsdetails");
   };
 
   return (
@@ -44,6 +44,7 @@ const Signup = () => {
               onChange={(e) => setEmail(e.target.value)}
               className="block w-full px-4 py-3 mb-4  border-2 border-transparent border-gray-200 focus:ring focus:ring-blue-500 focus:outline-none rounded-none"
               placeholder="Email address"
+              required
             />
             <input
               type="password"
@@ -51,6 +52,7 @@ const Signup = () => {
               onChange={(e) => setPassword(e.target.value)}
               className="block w-full px-4 py-3 mb-4  border-2 border-transparent border-gray-200 focus:ring focus:ring-blue-500 focus:outline-none rounded-none"
               placeholder="Password"
+              required
             />
             <input
               value="Register"

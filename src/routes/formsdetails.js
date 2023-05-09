@@ -4,14 +4,24 @@ import { useUserAuth } from "../routes/login/UserAuthContext";
 const Forms = () => {
   const { handleSubmit } = useUserAuth();
 
-  const [town, settown] = useState("");
-  const [city, setcity] = useState("");
-  // const [email, setemail] = useState("");
+  const [fullname, setFullName] = useState("");
+  const [companyName, setCompanyName] = useState("");
+  const [companyAddress, setCompanyAddress] = useState("");
+  const [skill, setSkill] = useState("");
+  const [permanentAddress, setPermanentAddress] = useState("");
+  const [about, setAbout] = useState("");
 
   const formSubmit = async (e) => {
     e.preventDefault();
     try {
-      await handleSubmit(town, city);
+      await handleSubmit(
+        fullname,
+        companyName,
+        companyAddress,
+        skill,
+        permanentAddress,
+        about
+      );
     } catch (err) {
       // setError(err.message);
     }
@@ -40,55 +50,52 @@ const Forms = () => {
                       name="full_name"
                       id="full_name"
                       className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
-                      onChange={(e) => settown(e.target.value)}
+                      onChange={(e) => setFullName(e.target.value)}
                       required
                     />
                   </div>
-                  {/* <div className="md:col-span-5">
-                    <label htmlFor="email">Full Name</label>
+                  <div className="md:col-span-5">
+                    <label htmlFor="full_name">Company Name</label>
                     <input
-                      type="email"
-                      name="email"
-                      id="email"
+                      type="text"
+                      name="full_name"
+                      id="full_name"
                       className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
-                      onChange={(e) => setemail(e.target.value)}
+                      onChange={(e) => setCompanyName(e.target.value)}
                       required
-                      placeholder="email@.com"
                     />
-                  </div> */}
+                  </div>
 
                   <div className="md:col-span-5">
-                    <label htmlFor="city">Email Address</label>
+                    <label htmlFor="city">Company Address</label>
                     <input
                       type="text"
                       name="city"
                       id="city"
                       className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
-                      onChange={(e) => setcity(e.target.value)}
+                      onChange={(e) => setCompanyAddress(e.target.value)}
                     />
                   </div>
 
-                  {/* <div className="md:col-span-3">
-                    <label for="address">Address / Street</label>
+                  <div className="md:col-span-3">
+                    <label for="address">Skill In</label>
                     <input
                       type="text"
                       name="address"
                       id="address"
                       className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
-                      value=""
-                      placeholder=""
+                      onChange={(e) => setSkill(e.target.value)}
                     />
                   </div>
 
                   <div className="md:col-span-2">
-                    <label for="city">City</label>
+                    <label for="city">Permanent address</label>
                     <input
                       type="text"
                       name="city"
                       id="city"
                       className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
-                      value=""
-                      placeholder=""
+                      onChange={(e) => setPermanentAddress(e.target.value)}
                     />
                   </div>
                   <div className="md:col-span-5  pb-10">
@@ -97,11 +104,10 @@ const Forms = () => {
                       type="text"
                       name="city"
                       id="city"
-                      className="h-[11rem] border mt-1 rounded px-4 w-full bg-gray-50"
-                      value=""
-                      placeholder=""
+                      className="h-[5rem] border mt-1 rounded px-4 w-full bg-gray-50"
+                      onChange={(e) => setAbout(e.target.value)}
                     />
-                  </div> */}
+                  </div>
 
                   <div className="md:col-span-5">
                     <div className="text-center">

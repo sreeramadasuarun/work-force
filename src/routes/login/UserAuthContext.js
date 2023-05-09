@@ -27,11 +27,22 @@ export function UserAuthContextProvider({ children }) {
   const collectRef = collection(database, "users");
   // const q = query(collectRef, where(id, "==", user.uid));
   // console.log(user.uid);
-  const handleSubmit = (town, city) => {
+  const handleSubmit = (
+    fullname,
+    companyName,
+    companyAddress,
+    skill,
+    permanentAddress,
+    about
+  ) => {
     try {
       const docRef = setDoc(doc(collectRef, user.uid), {
-        town: town,
-        city: city,
+        fullname: fullname,
+        companyName: companyName,
+        companyAddress: companyAddress,
+        skill: skill,
+        permanentAddress: permanentAddress,
+        about: about,
       });
 
       console.log("Document written with ID: ", docRef.id);
@@ -62,7 +73,7 @@ export function UserAuthContextProvider({ children }) {
   const [show, setShow] = useState("");
 
   async function getData() {
-    const docRef = doc(database, "users", user.uid);
+    const docRef = doc(database, "users");
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
       console.log("Document data:", docSnap.data());
