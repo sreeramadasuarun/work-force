@@ -9,41 +9,47 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { auth, database } from "../../utils/firebase";
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import { collection, addDoc, setDoc, getDocs } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
+import { Await } from "react-router-dom";
+import { getDatabase, ref, set } from "firebase/database";
 
 const userAuthContext = createContext();
 
 export function UserAuthContextProvider({ children }) {
   const collectRef = collection(database, "users");
 
-  const handleSubmit = (town, city) => {
+  const handleSubmit = () => {
     try {
-      const docRef = addDoc(collectRef, {
-        town: town,
-        city: city,
+      const docRef = setDoc(doc(collectRef, "SF"), {
+        name: "San Francisco",
+        state: "CA",
+        country: "USA",
+        capital: false,
+        population: 860000,
+        regions: ["west_coast", "norcal"],
       });
+
       console.log("Document written with ID: ", docRef.id);
     } catch (e) {
       console.error("Error adding document: ", e);
     }
   };
 
-  // const [show, setShow] = useState("");
+  const [show, setShow] = useState("");
 
-  // const getData = () => {
-  //   getDocs(collectRef).then((response) => {
-  //     const getnow = response.docs.map((item) => {
-  //       return { ...item.data(), id: item.id };
-  //     });
-  //     setShow(getnow);
-  //     console.log(getnow);
-  //     console.log(getnow[0]);
-  //     console.log(getnow[0].city);
-  //   });
-  // };
-  // useEffect(() => {
-  //   getData();
-  // }, []);
+  const getData = () => {
+    getDocs(collectRef).then((response) => {
+      const getnow = response.docs.map((item) => {
+        return { ...item.data(), id: item.id };
+      });
+      setShow({ ...getnow });
+      console.log(getnow);
+    });
+  };
+  useEffect(() => {
+    getData();
+  }, []);
 
   // .................................
 
@@ -83,7 +89,7 @@ export function UserAuthContextProvider({ children }) {
   return (
     <userAuthContext.Provider
       value={{
-        // show,
+        show,
         // // getdatanow,
         // getData,
         handleSubmit,

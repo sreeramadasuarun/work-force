@@ -7,10 +7,11 @@ import Home from "./routes/home";
 import Profile from "./routes/profile";
 import Signup from "./routes/signup";
 import Forms from "./routes/formsdetails";
+import { UserAuthContextProvider } from "./routes/login/UserAuthContext";
 
 function App() {
   return (
-    <>
+    <UserAuthContextProvider>
       <NavLink />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -20,7 +21,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/formsdetails" element={<Forms />} />
       </Routes>
-    </>
+    </UserAuthContextProvider>
   );
 }
 
