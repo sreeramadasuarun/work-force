@@ -9,15 +9,7 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { auth, database } from "../../utils/firebase";
-import {
-  collection,
-  addDoc,
-  setDoc,
-  getDocs,
-  query,
-  where,
-} from "firebase/firestore";
-import { doc, getDoc } from "firebase/firestore";
+import { collection, setDoc, getDocs, doc, getDoc } from "firebase/firestore";
 
 const userAuthContext = createContext();
 
@@ -25,33 +17,30 @@ export function UserAuthContextProvider({ children }) {
   const [user, setUser] = useState({});
 
   const collectRef = collection(database, "users");
-  // const q = query(collectRef, where(id, "==", user.uid));
-  // console.log(user.uid);
-  const handleSubmit = (
+  // // const q = query(collectRef, where(id, "==", user.uid));
+  // // console.log(user.uid);
+
+  async function handleSubmit(
     fullname,
     companyName,
     companyAddress,
     skill,
     permanentAddress,
     about
-  ) => {
-    try {
-      const docRef = setDoc(doc(collectRef, user.uid), {
-        fullname: fullname,
-        companyName: companyName,
-        companyAddress: companyAddress,
-        skill: skill,
-        permanentAddress: permanentAddress,
-        about: about,
-      });
+  ) {
+    const docRef = await setDoc(doc(collectRef, user.uid), {
+      fullname: fullname,
+      companyName: companyName,
+      companyAddress: companyAddress,
+      skill: skill,
+      permanentAddress: permanentAddress,
+      about: about,
+    });
 
-      console.log("Document written with ID: ", docRef.id);
-    } catch (e) {
-      console.error("Error adding document: ", e);
-    }
-  };
+    console.log("Document written with ID: ", docRef.id);
+  }
 
-  // const [show, setShow] = useState("");
+  // // const [show, setShow] = useState("");
 
   // const getData = () => {
   //   const docRef = doc(database, "users", user.uid);
@@ -65,30 +54,24 @@ export function UserAuthContextProvider({ children }) {
   //   });
   // };
 
-  // // console.log(user.uid);
-  // useEffect(() => {
-  //   getData();
-  // }, []);
+  // console.log(user.uid);
+  // getData();
+  // useEffect(() => {}, []);
 
   const [show, setShow] = useState("");
 
   async function getData() {
-    const docRef = doc(database, "users");
+    const docRef = doc(database, "users", user.uid);
     const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
-      console.log("Document data:", docSnap.data());
-      setShow(docSnap.data());
-    } else {
-      console.log("No such document!");
-    }
+    setShow(docSnap.data());
+    // console.log("Document data:", docSnap.data());
   }
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      getData();
-    }, 1500);
-    return () => clearInterval(interval);
-  }, [getData]);
+  getData();
+  // useEffect(() => {
+  //   setInterval(() => {
+  //   }, 1500);
+  // }, []);
 
   // .................................
   function logIn(email, password) {
@@ -127,8 +110,6 @@ export function UserAuthContextProvider({ children }) {
     <userAuthContext.Provider
       value={{
         show,
-        // // getdatanow,
-        // getData,
         handleSubmit,
         user,
         logIn,

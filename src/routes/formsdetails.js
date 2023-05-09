@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useUserAuth } from "../routes/login/UserAuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Forms = () => {
   const { handleSubmit } = useUserAuth();
+  const navigate = useNavigate();
 
   const [fullname, setFullName] = useState("");
   const [companyName, setCompanyName] = useState("");
@@ -10,21 +12,19 @@ const Forms = () => {
   const [skill, setSkill] = useState("");
   const [permanentAddress, setPermanentAddress] = useState("");
   const [about, setAbout] = useState("");
-
+  console.log(fullname);
   const formSubmit = async (e) => {
     e.preventDefault();
-    try {
-      await handleSubmit(
-        fullname,
-        companyName,
-        companyAddress,
-        skill,
-        permanentAddress,
-        about
-      );
-    } catch (err) {
-      // setError(err.message);
-    }
+    await handleSubmit(
+      fullname,
+      companyName,
+      companyAddress,
+      skill,
+      permanentAddress,
+      about
+    );
+
+    navigate("/profile");
   };
 
   return (
@@ -55,11 +55,11 @@ const Forms = () => {
                     />
                   </div>
                   <div className="md:col-span-5">
-                    <label htmlFor="full_name">Company Name</label>
+                    <label htmlFor="setCompanyName">Company Name</label>
                     <input
                       type="text"
-                      name="full_name"
-                      id="full_name"
+                      name="setCompanyName"
+                      id="setCompanyName"
                       className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
                       onChange={(e) => setCompanyName(e.target.value)}
                       required
@@ -67,43 +67,45 @@ const Forms = () => {
                   </div>
 
                   <div className="md:col-span-5">
-                    <label htmlFor="city">Company Address</label>
+                    <label htmlFor="setCompanyAddress">Company Address</label>
                     <input
                       type="text"
-                      name="city"
-                      id="city"
+                      name="setCompanyAddress"
+                      id="setCompanyAddress"
                       className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
                       onChange={(e) => setCompanyAddress(e.target.value)}
                     />
                   </div>
 
                   <div className="md:col-span-3">
-                    <label for="address">Skill In</label>
+                    <label htmlFor="setSkill">Skill In</label>
                     <input
                       type="text"
-                      name="address"
-                      id="address"
+                      name="setSkill"
+                      id="setSkill"
                       className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
                       onChange={(e) => setSkill(e.target.value)}
                     />
                   </div>
 
                   <div className="md:col-span-2">
-                    <label for="city">Permanent address</label>
+                    <label htmlFor="setPermanentAddress">
+                      Permanent address
+                    </label>
                     <input
                       type="text"
-                      name="city"
-                      id="city"
+                      name="setPermanentAddress"
+                      id="setPermanentAddress"
                       className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
                       onChange={(e) => setPermanentAddress(e.target.value)}
                     />
                   </div>
                   <div className="md:col-span-5  pb-10">
-                    <label for="city">About</label>
+                    <label htmlFor="setAbout">About</label>
                     <textarea
                       type="text"
-                      name="city"
-                      id="city"
+                      name="setAbout"
+                      id="setAbout"
                       className="h-[5rem] border mt-1 rounded px-4 w-full bg-gray-50"
                       onChange={(e) => setAbout(e.target.value)}
                     />

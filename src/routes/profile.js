@@ -1,15 +1,12 @@
 import React, { useEffect } from "react";
 import { useUserAuth } from "../routes/login/UserAuthContext";
-import { useNavigate } from "react-router-dom";
 import userpic from "../assets/images/userpic.avif";
 
 const Profile = () => {
   const { user, show } = useUserAuth();
 
-  const navigate = useNavigate();
-
   // console.log(show);
-  // console.log(show.town);
+  console.log(show.fullname);
 
   return (
     <main className=" mt-[3.5rem]  w-screen">
