@@ -72,11 +72,12 @@ export function UserAuthContextProvider({ children }) {
     }
   }
 
-  getData();
-  // useEffect(() => {
-  // }, []);
-
-  // console.log(show);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      getData();
+    }, 1500);
+    return () => clearInterval(interval);
+  }, [getData]);
 
   // .................................
   function logIn(email, password) {

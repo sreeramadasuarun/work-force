@@ -9,7 +9,7 @@ const Profile = () => {
   const navigate = useNavigate();
 
   console.log(show);
-  console.log(show.town);
+  // console.log(show.town);
 
   return (
     <main className=" mt-[3.5rem]  w-screen">
