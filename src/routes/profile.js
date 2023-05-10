@@ -110,7 +110,21 @@ const Profile = () => {
           </section>
         </main>
       ) : (
-        <div className=" mt-[3.5rem]"> "reload the page"</div>
+        <>
+          <div className=" mt-[3.5rem]"> "reload the page"</div>
+          <div className="text-sm leading-normal text-blueGray-400 font-bold uppercase">
+            {user ? (
+              <div
+                onClick={() => navigate("/formsdetails")}
+                className="text-blue-500 cursor-pointer 	"
+              >
+                fill details
+              </div>
+            ) : (
+              "login for details"
+            )}
+          </div>
+        </>
       )}
     </>
   );
