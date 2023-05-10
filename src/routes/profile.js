@@ -107,7 +107,7 @@ const Profile = () => {
           </section>
         </main>
       ) : (
-        "reload the page"
+        <div className=" mt-[3.5rem]"> "reload the page"</div>
       )}
     </>
   );
