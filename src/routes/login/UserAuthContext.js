@@ -109,6 +109,7 @@ export function UserAuthContextProvider({ children }) {
   return (
     <userAuthContext.Provider
       value={{
+        getData,
         show,
         handleSubmit,
         user,

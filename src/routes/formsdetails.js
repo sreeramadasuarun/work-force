@@ -15,6 +15,8 @@ const Forms = () => {
   console.log(fullname);
   const formSubmit = async (e) => {
     e.preventDefault();
+    navigate("/profile");
+
     await handleSubmit(
       fullname,
       companyName,
@@ -23,8 +25,6 @@ const Forms = () => {
       permanentAddress,
       about
     );
-
-    navigate("/profile");
   };
 
   return (
