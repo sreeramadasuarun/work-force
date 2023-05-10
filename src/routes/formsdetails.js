@@ -38,18 +38,18 @@ const Forms = () => {
                 <p>Please fill out all the fields.</p>
               </div>
 
-              <div className="lg:col-span-2 w-full">
+              <div className="lg:col-span-2 w-full ">
                 <form
                   onSubmit={formSubmit}
-                  className="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5"
+                  className="grid gap-4 gap-y-2 text-md grid-cols-1 md:grid-cols-5 "
                 >
-                  <div className="md:col-span-5">
+                  <div className="md:col-span-5 ">
                     <label htmlFor="full_name">Full Name</label>
                     <input
                       type="text"
                       name="full_name"
                       id="full_name"
-                      className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                      className="h-10 border  mt-1 rounded px-4 w-full bg-gray-300 hover:bg-gray-50 duration-500"
                       onChange={(e) => setFullName(e.target.value)}
                       required
                     />
@@ -60,7 +60,7 @@ const Forms = () => {
                       type="text"
                       name="setCompanyName"
                       id="setCompanyName"
-                      className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                      className="h-10 border mt-1 rounded px-4 w-full bg-gray-300 hover:bg-gray-50 duration-500"
                       onChange={(e) => setCompanyName(e.target.value)}
                       required
                     />
@@ -72,7 +72,7 @@ const Forms = () => {
                       type="text"
                       name="setCompanyAddress"
                       id="setCompanyAddress"
-                      className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                      className="h-10 border mt-1 rounded px-4 w-full bg-gray-300 hover:bg-gray-50 duration-500"
                       onChange={(e) => setCompanyAddress(e.target.value)}
                     />
                   </div>
@@ -83,7 +83,7 @@ const Forms = () => {
                       type="text"
                       name="setSkill"
                       id="setSkill"
-                      className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                      className="h-10 border mt-1 rounded px-4 w-full bg-gray-300 hover:bg-gray-50 duration-500"
                       onChange={(e) => setSkill(e.target.value)}
                     />
                   </div>
@@ -96,7 +96,7 @@ const Forms = () => {
                       type="text"
                       name="setPermanentAddress"
                       id="setPermanentAddress"
-                      className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                      className="h-10 border mt-1 rounded px-4 w-full bg-gray-300 hover:bg-gray-50 duration-500"
                       onChange={(e) => setPermanentAddress(e.target.value)}
                     />
                   </div>
@@ -106,7 +106,7 @@ const Forms = () => {
                       type="text"
                       name="setAbout"
                       id="setAbout"
-                      className="h-[5rem] border mt-1 rounded px-4 w-full bg-gray-50"
+                      className="h-[5rem] border mt-1 rounded px-4 w-full bg-gray-300 hover:bg-gray-50 duration-500"
                       onChange={(e) => setAbout(e.target.value)}
                     />
                   </div>
