@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useUserAuth } from "../routes/login/UserAuthContext";
 import userpic from "../assets/images/userpic.avif";
 import { useNavigate } from "react-router-dom";

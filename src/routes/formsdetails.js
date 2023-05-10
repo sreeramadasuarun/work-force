@@ -3,9 +3,9 @@ import { useUserAuth } from "../routes/login/UserAuthContext";
 import { useNavigate } from "react-router-dom";
 
 const Forms = () => {
-  const { handleSubmit, user, show } = useUserAuth();
+  const { handleSubmit, user, show, getData } = useUserAuth();
   const navigate = useNavigate();
-
+  getData();
   const [fullname, setFullName] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [companyAddress, setCompanyAddress] = useState("");

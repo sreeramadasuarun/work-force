@@ -20,6 +20,7 @@ export function UserAuthContextProvider({ children }) {
   // // const q = query(collectRef, where(id, "==", user.uid));
   // // console.log(user.uid);
 
+  //push to firebase
   async function handleSubmit(
     fullname,
     companyName,
@@ -40,6 +41,8 @@ export function UserAuthContextProvider({ children }) {
     console.log("Document written with ID: ", docRef.id);
   }
 
+  //.........  //pull from firebase
+
   // // const [show, setShow] = useState("");
 
   // const getData = () => {
@@ -57,6 +60,8 @@ export function UserAuthContextProvider({ children }) {
   // console.log(user.uid);
   // getData();
   // useEffect(() => {}, []);
+
+  //.........  //pull from firebase
 
   const [show, setShow] = useState("");
 
