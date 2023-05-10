@@ -33,9 +33,9 @@ const Forms = () => {
         <div className="w-[92rem]">
           <div className="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
             <div className="flex gap-10">
-              <div className="text-white  w-[25rem] h-[33rem] bg-cover bg-hero-image2 flex flex-col justify-center items-center">
+              <div className="text-white  w-[30rem] h-[33rem] bg-cover bg-hero-image2 flex flex-col justify-center items-center">
                 <p className="font-medium text-lg ">Personal Details</p>
-                <p>Please fill out all the fields.</p>
+                <p>Please fill out all the fields...</p>
               </div>
 
               <div className="lg:col-span-2 w-full ">
@@ -49,7 +49,7 @@ const Forms = () => {
                       type="text"
                       name="full_name"
                       id="full_name"
-                      className="h-10 border  mt-1 rounded px-4 w-full bg-gray-300 hover:bg-gray-50 duration-500"
+                      className="h-10 border  mt-1 rounded px-4 w-full bg-gray-300 hover:bg-gray-200 duration-500"
                       onChange={(e) => setFullName(e.target.value)}
                       required
                     />
@@ -60,7 +60,7 @@ const Forms = () => {
                       type="text"
                       name="setCompanyName"
                       id="setCompanyName"
-                      className="h-10 border mt-1 rounded px-4 w-full bg-gray-300 hover:bg-gray-50 duration-500"
+                      className="h-10 border mt-1 rounded px-4 w-full bg-gray-300 hover:bg-gray-200 duration-500"
                       onChange={(e) => setCompanyName(e.target.value)}
                       required
                     />
@@ -72,7 +72,7 @@ const Forms = () => {
                       type="text"
                       name="setCompanyAddress"
                       id="setCompanyAddress"
-                      className="h-10 border mt-1 rounded px-4 w-full bg-gray-300 hover:bg-gray-50 duration-500"
+                      className="h-10 border mt-1 rounded px-4 w-full bg-gray-300 hover:bg-gray-200 duration-500"
                       onChange={(e) => setCompanyAddress(e.target.value)}
                     />
                   </div>
@@ -83,7 +83,7 @@ const Forms = () => {
                       type="text"
                       name="setSkill"
                       id="setSkill"
-                      className="h-10 border mt-1 rounded px-4 w-full bg-gray-300 hover:bg-gray-50 duration-500"
+                      className="h-10 border mt-1 rounded px-4 w-full bg-gray-300 hover:bg-gray-200 duration-500"
                       onChange={(e) => setSkill(e.target.value)}
                     />
                   </div>
@@ -96,7 +96,7 @@ const Forms = () => {
                       type="text"
                       name="setPermanentAddress"
                       id="setPermanentAddress"
-                      className="h-10 border mt-1 rounded px-4 w-full bg-gray-300 hover:bg-gray-50 duration-500"
+                      className="h-10 border mt-1 rounded px-4 w-full bg-gray-300 hover:bg-gray-200 duration-500"
                       onChange={(e) => setPermanentAddress(e.target.value)}
                     />
                   </div>
@@ -106,7 +106,7 @@ const Forms = () => {
                       type="text"
                       name="setAbout"
                       id="setAbout"
-                      className="h-[5rem] border mt-1 rounded px-4 w-full bg-gray-300 hover:bg-gray-50 duration-500"
+                      className="h-[5rem] border mt-1 rounded px-4 w-full bg-gray-300 hover:bg-gray-200 duration-500"
                       onChange={(e) => setAbout(e.target.value)}
                     />
                   </div>
