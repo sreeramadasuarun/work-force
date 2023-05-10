@@ -3,16 +3,16 @@ import { useUserAuth } from "../routes/login/UserAuthContext";
 import { useNavigate } from "react-router-dom";
 
 const Forms = () => {
-  const { handleSubmit, user, show, getData } = useUserAuth();
+  const { handleSubmit } = useUserAuth();
   const navigate = useNavigate();
-  getData();
+
   const [fullname, setFullName] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [companyAddress, setCompanyAddress] = useState("");
   const [skill, setSkill] = useState("");
   const [permanentAddress, setPermanentAddress] = useState("");
   const [about, setAbout] = useState("");
-  console.log(fullname);
+
   const formSubmit = async (e) => {
     e.preventDefault();
     navigate("/profile");
@@ -46,7 +46,7 @@ const Forms = () => {
                   <div className="md:col-span-5 ">
                     <label htmlFor="full_name">Full Name</label>
                     <input
-                      placeholder={user ? show.fullname : "login for details"}
+                      // placeholder={user ? show.fullname : "login for details"}
                       type="text"
                       name="full_name"
                       id="full_name"
@@ -58,9 +58,9 @@ const Forms = () => {
                   <div className="md:col-span-5">
                     <label htmlFor="setCompanyName">Company Name</label>
                     <input
-                      placeholder={
-                        user ? show.companyName : "login for details"
-                      }
+                      // placeholder={
+                      //   user ? show.companyName : "login for details"
+                      // }
                       type="text"
                       name="setCompanyName"
                       id="setCompanyName"
@@ -73,9 +73,9 @@ const Forms = () => {
                   <div className="md:col-span-5">
                     <label htmlFor="setCompanyAddress">Company Address</label>
                     <input
-                      placeholder={
-                        user ? show.companyAddress : "login for details"
-                      }
+                      // placeholder={
+                      //   user ? show.companyAddress : "login for details"
+                      // }
                       type="text"
                       name="setCompanyAddress"
                       id="setCompanyAddress"
@@ -87,7 +87,7 @@ const Forms = () => {
                   <div className="md:col-span-3">
                     <label htmlFor="setSkill">Skill In</label>
                     <input
-                      placeholder={user ? show.skill : "login for details"}
+                      // placeholder={user ? show.skill : "login for details"}
                       type="text"
                       name="setSkill"
                       id="setSkill"
@@ -101,9 +101,9 @@ const Forms = () => {
                       Permanent address
                     </label>
                     <input
-                      placeholder={
-                        user ? show.permanentAddress : "login for details"
-                      }
+                      // placeholder={
+                      //   user ? show.permanentAddress : "login for details"
+                      // }
                       type="text"
                       name="setPermanentAddress"
                       id="setPermanentAddress"
@@ -114,7 +114,7 @@ const Forms = () => {
                   <div className="md:col-span-5  pb-10">
                     <label htmlFor="setAbout">About</label>
                     <textarea
-                      placeholder={user ? show.about : "login for details"}
+                      // placeholder={user ? show.about : "login for details"}
                       type="text"
                       name="setAbout"
                       id="setAbout"
