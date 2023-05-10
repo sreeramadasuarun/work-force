@@ -28,7 +28,7 @@ const Forms = () => {
   };
 
   return (
-    <div className="mt-[3.6rem]">
+    <div className="mt-[2.3rem]">
       <div className="min-h-screen bg-gray-100 flex items-center justify-center ">
         <div className="w-[92rem]">
           <div className="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
@@ -50,7 +50,7 @@ const Forms = () => {
                       type="text"
                       name="full_name"
                       id="full_name"
-                      className="h-10 border  mt-1 rounded px-4 w-full bg-gray-300 hover:bg-gray-200 duration-500"
+                      className="h-10 border  mt-1 rounded px-4 w-full bg-gray-100 shadow-inner hover:bg-gray-200 duration-500"
                       onChange={(e) => setFullName(e.target.value)}
                       required
                     />
@@ -64,7 +64,7 @@ const Forms = () => {
                       type="text"
                       name="setCompanyName"
                       id="setCompanyName"
-                      className="h-10 border mt-1 rounded px-4 w-full bg-gray-300 hover:bg-gray-200 duration-500"
+                      className="h-10 border mt-1 rounded px-4 w-full bg-gray-100 shadow-inner hover:bg-gray-200 duration-500"
                       onChange={(e) => setCompanyName(e.target.value)}
                       required
                     />
@@ -79,7 +79,7 @@ const Forms = () => {
                       type="text"
                       name="setCompanyAddress"
                       id="setCompanyAddress"
-                      className="h-10 border mt-1 rounded px-4 w-full bg-gray-300 hover:bg-gray-200 duration-500"
+                      className="h-10 border mt-1 rounded px-4 w-full bg-gray-100 shadow-inner hover:bg-gray-200 duration-500"
                       onChange={(e) => setCompanyAddress(e.target.value)}
                     />
                   </div>
@@ -91,7 +91,7 @@ const Forms = () => {
                       type="text"
                       name="setSkill"
                       id="setSkill"
-                      className="h-10 border mt-1 rounded px-4 w-full bg-gray-300 hover:bg-gray-200 duration-500"
+                      className="h-10 border mt-1 rounded px-4 w-full bg-gray-100 shadow-inner hover:bg-gray-200 duration-500"
                       onChange={(e) => setSkill(e.target.value)}
                     />
                   </div>
@@ -107,7 +107,7 @@ const Forms = () => {
                       type="text"
                       name="setPermanentAddress"
                       id="setPermanentAddress"
-                      className="h-10 border mt-1 rounded px-4 w-full bg-gray-300 hover:bg-gray-200 duration-500"
+                      className="h-10 border mt-1 rounded px-4 w-full bg-gray-100 shadow-inner hover:bg-gray-200 duration-500"
                       onChange={(e) => setPermanentAddress(e.target.value)}
                     />
                   </div>
@@ -118,19 +118,19 @@ const Forms = () => {
                       type="text"
                       name="setAbout"
                       id="setAbout"
-                      className="h-[5rem] border mt-1 rounded px-4 w-full bg-gray-300 hover:bg-gray-200 duration-500"
+                      className="h-[5rem] border mt-1 rounded px-4 w-full bg-gray-100 shadow-inner hover:bg-gray-200 duration-500"
                       onChange={(e) => setAbout(e.target.value)}
                     />
                   </div>
 
                   <div className="md:col-span-5">
                     <div className="text-center">
-                      <input
+                      {/* <input
                         onClick={() => navigate("/profile")}
-                        type="submit"
-                        value="cancell"
+                        type="button"
+                        value="cancel"
                         className=" mr-5 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded cursor-pointer"
-                      />
+                      /> */}
                       <input
                         type="submit"
                         value="submit"
