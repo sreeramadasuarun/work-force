@@ -8,13 +8,20 @@ const Home = () => {
   const [email, setEmail] = useState(" ");
   const [password, setPassword] = useState(" ");
   const { logIn, user } = useUserAuth();
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await logIn(email, password);
 
-    setPassword(" ");
-    setEmail(" ");
+    try {
+      await logIn(email, password);
+      setError("");
+
+      setPassword(" ");
+      setEmail(" ");
+    } catch (err) {
+      setError(err.message);
+    }
   };
 
   return (
@@ -43,7 +50,7 @@ const Home = () => {
                 alt="dwfew"
               />
             ) : (
-              <div className="w-full  md:mt-0 md:w-2/5">
+              <div className="w-full  md:mt-0 md:w-2/6">
                 <div className="mt-[5rem] mb-[6rem] flex flex-col gap-4 z-10 h-auto p-8 py-10 overflow-hidden bg-white border-b-2 border-gray-300 shadow-2xl px-7 rounded-none">
                   <h3 className="mb-6 text-2xl font-medium text-center">
                     Sign in to your Account
@@ -74,6 +81,9 @@ const Home = () => {
                     <NavLink to="/signup" className="text-blue-500 underline">
                       Sign up here
                     </NavLink>
+                    {error && (
+                      <p className="text-red-500 font-bold mt-4">{error}</p>
+                    )}
                   </p>
                 </div>
               </div>

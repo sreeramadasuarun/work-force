@@ -3,7 +3,7 @@ import { useUserAuth } from "../routes/login/UserAuthContext";
 import { useNavigate } from "react-router-dom";
 
 const Forms = () => {
-  const { handleSubmit } = useUserAuth();
+  const { handleSubmit, user, show } = useUserAuth();
   const navigate = useNavigate();
 
   const [fullname, setFullName] = useState("");
@@ -46,6 +46,7 @@ const Forms = () => {
                   <div className="md:col-span-5">
                     <label htmlFor="full_name">Full Name</label>
                     <input
+                      placeholder={user ? show.fullname : "login for details"}
                       type="text"
                       name="full_name"
                       id="full_name"
@@ -57,6 +58,9 @@ const Forms = () => {
                   <div className="md:col-span-5">
                     <label htmlFor="setCompanyName">Company Name</label>
                     <input
+                      placeholder={
+                        user ? show.companyName : "login for details"
+                      }
                       type="text"
                       name="setCompanyName"
                       id="setCompanyName"
@@ -69,6 +73,9 @@ const Forms = () => {
                   <div className="md:col-span-5">
                     <label htmlFor="setCompanyAddress">Company Address</label>
                     <input
+                      placeholder={
+                        user ? show.companyAddress : "login for details"
+                      }
                       type="text"
                       name="setCompanyAddress"
                       id="setCompanyAddress"
@@ -80,6 +87,7 @@ const Forms = () => {
                   <div className="md:col-span-3">
                     <label htmlFor="setSkill">Skill In</label>
                     <input
+                      placeholder={user ? show.skill : "login for details"}
                       type="text"
                       name="setSkill"
                       id="setSkill"
@@ -93,6 +101,9 @@ const Forms = () => {
                       Permanent address
                     </label>
                     <input
+                      placeholder={
+                        user ? show.permanentAddress : "login for details"
+                      }
                       type="text"
                       name="setPermanentAddress"
                       id="setPermanentAddress"
@@ -103,6 +114,7 @@ const Forms = () => {
                   <div className="md:col-span-5  pb-10">
                     <label htmlFor="setAbout">About</label>
                     <textarea
+                      placeholder={user ? show.about : "login for details"}
                       type="text"
                       name="setAbout"
                       id="setAbout"
@@ -113,6 +125,12 @@ const Forms = () => {
 
                   <div className="md:col-span-5">
                     <div className="text-center">
+                      <input
+                        onClick={() => navigate("/profile")}
+                        type="submit"
+                        value="cancell"
+                        className=" mr-5 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded cursor-pointer"
+                      />
                       <input
                         type="submit"
                         value="submit"

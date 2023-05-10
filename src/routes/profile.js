@@ -1,8 +1,11 @@
 import React, { useEffect } from "react";
 import { useUserAuth } from "../routes/login/UserAuthContext";
 import userpic from "../assets/images/userpic.avif";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
+  const navigate = useNavigate();
+
   const { user, show, getData } = useUserAuth();
   getData();
   return (
@@ -31,18 +34,18 @@ const Profile = () => {
                       {user ? show.permanentAddress : "login for details"}
                     </div>
                     <br />
-                    {/* <div className="text-sm leading-normal text-blueGray-400 font-bold uppercase">
-                  {user ? (
-                    <div
-                      onClick={() => navigate("/formsdetails")}
-                      className="text-blue-500 cursor-pointer 	"
-                    >
-                      fill details
+                    <div className="text-sm leading-normal text-blueGray-400 font-bold uppercase">
+                      {user ? (
+                        <div
+                          onClick={() => navigate("/formsdetails")}
+                          className="text-blue-500 cursor-pointer 	"
+                        >
+                          Update details
+                        </div>
+                      ) : (
+                        "login for details"
+                      )}
                     </div>
-                  ) : (
-                    "login for details"
-                  )}
-                </div> */}
                   </div>
                 </div>
                 <div className="mt-10 py-10 border-t border-blueGray-200 text-center">

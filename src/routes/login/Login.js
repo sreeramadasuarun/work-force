@@ -8,12 +8,18 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const { logIn } = useUserAuth();
   const navigate = useNavigate();
+  const [error, setError] = useState("");
 
   // //.......sign login
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await logIn(email, password);
-    navigate("/");
+    setError("");
+    try {
+      await logIn(email, password);
+      navigate("/");
+    } catch (err) {
+      setError(err.message);
+    }
   };
 
   return (
@@ -33,10 +39,11 @@ const Login = () => {
         <div className="absolute -top-20 -right-20 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
       </div>
       <div className="flex md:w-1/2 justify-center py-10 items-center bg-white">
-        <div className="relative z-10 h-auto p-8 py-10 overflow-hidden bg-white border-b-2 border-gray-300 shadow-2xl px-7 rounded-none">
+        <div className="flex flex-col gap-4 z-10 h-auto p-8 py-10 overflow-hidden bg-white border-b-2 border-gray-300 shadow-2xl px-7 rounded-none">
           <h3 className="mb-6 text-2xl font-medium text-center">
-            Sign in to your Account
+            Sign in your Account
           </h3>
+
           <form onSubmit={handleSubmit}>
             <input
               type="text"
@@ -64,6 +71,7 @@ const Login = () => {
             <NavLink to="/signup" className="text-blue-500 underline">
               Sign up here
             </NavLink>
+            {error && <p className="text-red-500 font-bold mt-4">{error}</p>}
           </p>
         </div>
       </div>
